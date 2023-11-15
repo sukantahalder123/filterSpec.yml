@@ -1,0 +1,295 @@
+openapi: 3.0.3 
+info:
+  title: Workflow Managemant Specification
+  version: 1.0.0
+  description: Workflow Managemant API specification
+
+servers:
+  - url: '{protocol}://{ip}:{port}/{base-api}'
+    variables:
+      protocol:
+        enum:
+          - http
+          - https
+        default: http
+      ip:
+        enum:
+          - localhost
+          - 34.199.12.114
+        default: localhost
+      port:
+        enum:
+          - '9000'
+          - '5057'
+        default: '9000'
+      base-api:
+        enum:
+          - api
+        default: api
+tags: 
+  - name: ProjectOverview
+    description: perform CRUD operations on Projects Table
+  - name: Projects
+    description: perform CRUD operations on Project Table
+  - name: UseCases
+    description: perform CRUD operations on Usecases Table
+  - name: Resource
+    description: perform CRUD operations on Resources Table
+  - name: Task
+    description: perform CRUD operations on Task table
+  - name: ProjectStatus
+    description: perform CRUD operations on ProjectStatus table
+  
+paths:
+  /Projectoverview/{id}:
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+          format: int64
+        required: true
+    get:
+      tags:
+        - ProjectOverview
+      summary: get resources details of a specific Projects
+      operationId: ProjectOverview
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectDTO'
+        404:
+          description: "Service Not found"
+        500:
+          description: "Internal Server Error"
+  /Projects:
+    get:
+      tags: 
+        - Projects
+      summary: Get all projects
+      operationId: getProjectList
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ProjectDTO'
+        '404':
+          description: "Service Not found"
+        '500':
+          description: "Internal Server Error"
+  /Projects/{id}:
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+          format: int64
+        required: true
+    get:
+      tags:
+        - Projects
+      summary: get resources details of a specific Projects
+      operationId: getProjects
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectDTO'
+        404:
+          description: "Service Not found"
+        500:
+          description: "Internal Server Error"
+  /Projects/{id}/{resource}:
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+          format: int64
+        required: true
+      - in: path
+        name: resource
+        schema:
+          type: integer
+          format: int64
+        required: true
+    get:
+      tags:
+        - Projects
+        - Resource
+      summary: get resources details of a specific Projects
+      operationId: resources
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectDTO'
+        404:
+          description: "Service Not found"
+        500:
+          description: "Internal Server Error"
+  /Usecases:
+    get:
+      tags:
+        - UseCases
+      summary: Fetch list of usecases
+      operationId: getUseCases
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UsecaseDTO'
+        '404':
+          description: Service Not found
+        '500':
+          description: Internal Server Error
+  /resource:
+    get:
+      tags:
+        - Resource
+      summary: Fetch list of Resources
+      operationId: getResources
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ResourcesDTO'
+        '404':
+          description: Service Not found
+        '500':
+          description: Internal Server Error
+  /resource/{id}:
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+          format: int64
+        required: true
+    get:
+      tags:
+        - Resource
+      summary: Fetch an Resource of given id
+      operationId: getResource
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourcesDTO'
+        '404':
+          description: Service Not found
+        '500':
+          description: Internal Server Error
+          
+  /task:
+    get:
+      tags:
+        - Task
+      summary: Fetch list of task
+      operationId: getTaskList
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TaskDTO'
+        '404':
+          description: "Service Not found"
+        '500':
+          description: "Internal Server Error"
+  /task/{id}:
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+          format: int64
+        required: true
+    get:
+      tags:
+        - Task
+      summary: Fetch an Task of given id
+      operationId: getTask
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskDTO'
+        '404':
+          description: "Service Not found"
+        '500':
+          description: "Internal Server Error"
+
+  /ProjectStatus:
+    get:
+      tags:
+        - ProjectStatus
+      summary: Fetch list of ProjectStatus
+      operationId: getProjectStatus
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UsecaseDTO'
+        '404':
+          description: Service Not found
+        '500':
+          description: Internal Server Error
+  /ProjectStatus/{id}/usecases:
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+          format: int64
+        required: true
+    get:
+      tags:
+        - ProjectStatus
+        - UseCases
+      summary: Get all use cases for a projectStatus
+      operationId: getProjectStatusUsecases
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UsecaseDTO'
+        404:
+          description: "Service Not found"
+        500:
+          description: "Internal Server Error"
+  

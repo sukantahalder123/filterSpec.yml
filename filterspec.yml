@@ -57,10 +57,6 @@ paths:
       responses:
         200:
           description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProjectDTO'
         404:
           description: "Service Not found"
         500:
@@ -74,12 +70,6 @@ paths:
       responses:
         '200':
           description: Ok
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/ProjectDTO'
         '404':
           description: "Service Not found"
         '500':
@@ -100,10 +90,6 @@ paths:
       responses:
         200:
           description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProjectDTO'
         404:
           description: "Service Not found"
         500:
@@ -131,10 +117,6 @@ paths:
       responses:
         200:
           description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProjectDTO'
         404:
           description: "Service Not found"
         500:
@@ -148,12 +130,6 @@ paths:
       responses:
         '200':
           description: Ok
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/UsecaseDTO'
         '404':
           description: Service Not found
         '500':
@@ -167,12 +143,6 @@ paths:
       responses:
         '200':
           description: Ok
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/ResourcesDTO'
         '404':
           description: Service Not found
         '500':
@@ -193,10 +163,6 @@ paths:
       responses:
         '200':
           description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ResourcesDTO'
         '404':
           description: Service Not found
         '500':
@@ -211,12 +177,6 @@ paths:
       responses:
         '200':
           description: OK
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/TaskDTO'
         '404':
           description: "Service Not found"
         '500':
@@ -237,10 +197,6 @@ paths:
       responses:
         '200':
           description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TaskDTO'
         '404':
           description: "Service Not found"
         '500':
@@ -255,12 +211,6 @@ paths:
       responses:
         '200':
           description: Ok
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/UsecaseDTO'
         '404':
           description: Service Not found
         '500':
@@ -282,12 +232,6 @@ paths:
       responses:
         200:
           description: OK
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/UsecaseDTO'
         404:
           description: "Service Not found"
         500:

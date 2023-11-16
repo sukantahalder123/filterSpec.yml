@@ -1,5 +1,5 @@
 # Workflow Pseudocode
- 
+
 ## 1.ProjectOverview API
 
 ### 1.1 Function to get an existing ProjectOverview
@@ -8,10 +8,14 @@
 - API End Point: `/Projectoverview/{id}:`
 - Request: async `(req, res)`
 - Response: `res.status(200).json(Projectoverview)`
- 
-    1. when the user hits the`/Projectoverview/{id}:` endpoint an event is started.
-    2. this event triggers the correponding lambda with the request.
-    3. lambda communicates with the postgresql database and performs the related crud operation;
+
+    1. when the user hits the `/Projectoverview/{id}:` endpoint an event is started.
+    2. this event triggers the correponding lambda with the request body.
+    3. Lambda contains the asynchronous function with logical code for connecting to the postgresql database.
+    4. we are using aws secrets manager to store our postgresql credentials.
+    5. Lambda recieve postgresql credentials from aws secrets manager and connection is made to the corresponding database.
+    6. lambda function takes the `{id}` from the user and gets the details of the project from the `projects` table in the database by executing the postgresql query.
+    7. Then the connection to the database is terminated and the instance of the lambda is no longer in existence.
 
 ## 2. Projects API
 
@@ -22,10 +26,13 @@
 - Request: async `(req, res)`
 - Response: `res.status(200).json(Projects)`
 
-    1. when the user hits the `/projects:` endpoint an event is started.
-    2. this event triggers the correponding lambda with the request.
-    3. lambda communicates with the postgresql database and performs the related crud
-    operation;
+    1. when the user hits the `/Projects:` endpoint an event is started.
+    2. this event triggers the correponding lambda with the request body.
+    3. Lambda contains the asynchronous function with logical code for connecting to the postgresql database.
+    4. we are using aws secrets manager to store our postgresql credentials.
+    5. Lambda recieve postgresql credentials from aws secrets manager and connection is made to the corresponding database.
+    6. lambda function takes the details `projects` table in the database by executing the postgresql query.
+    7. Then the connection to the database is terminated and the instance of the lambda is no longer in existence.
 
 ### 2.2 Function to get an existing Projects
 
@@ -34,10 +41,13 @@
 - Request: async `(req, res)`
 - Response: `res.status(200).json(Project)`
 
-    1. when the user hits the `/Projects:` endpoint an event is started.
-    2. this event triggers the correponding lambda with request.
-    3. lambda communicates with the postgresql database and performs the related crud
-    operation;
+    1. when the user hits the `/Projects/{id}:` endpoint an event is started.
+    2. this event triggers the correponding lambda with the request body.
+    3. Lambda contains the asynchronous function with logical code for connecting to the postgresql database.
+    4. we are using aws secrets manager to store our postgresql credentials.
+    5. Lambda recieve postgresql credentials from aws secrets manager and connection is made to the corresponding database.
+    6. lambda function takes the `{id}` from the user and gets the details of the project from the `projects` table in the database by executing the postgresql query.
+    7. Then the connection to the database is terminated and the instance of the lambda is no longer in existence.
 
 ### 2.3 Function to get an existing resource
 
@@ -47,9 +57,12 @@
 - Response: `res.status(200).json(resource)`
 
     1. when the user hits the `/Projects/{id}/{resource}:` endpoint an event is started.
-    2. this event triggers the correponding lambda with request.
-    3. lambda communicates with the postgresql database and performs the related crud 
-    operation;
+    2. this event triggers the correponding lambda with the request body.
+    3. Lambda contains the asynchronous function with logical code for connecting to the postgresql database.
+    4. we are using aws secrets manager to store our postgresql credentials.
+    5. Lambda recieve postgresql credentials from aws secrets manager and connection is made to the corresponding database.
+    6. lambda function takes the `{id}` from the user and gets the details of the project from the `resource` table in the database by executing the postgresql query.
+    7. Then the connection to the database is terminated and the instance of the lambda is no longer in existence.
 
 ## 3. UseCases API
 
@@ -61,9 +74,12 @@
 - Response: `res.status(200).json(/Usecases:)`
 
     1. when the user hits the `/Usecases:` endpoint an event is started.
-    2. this event triggers the correponding lambda with the request.
-    3. lambda communicates with the postgresql database and performs the related crud
-    operation;
+    2. this event triggers the correponding lambda with the request body.
+    3. Lambda contains the asynchronous function with logical code for connecting to the postgresql database.
+    4. we are using aws secrets manager to store our postgresql credentials.
+    5. Lambda recieve postgresql credentials from aws secrets manager and connection is made to the corresponding database.
+    6. lambda function takes the details `Usecases` table in the database by executing the postgresql query.
+    7. Then the connection to the database is terminated and the instance of the lambda is no longer in existence.
 
 ### 3.1 Function to get all getResources
 
@@ -73,9 +89,12 @@
 - Response: `res.status(200).json (getResources)`
 
     1. when the user hits the `/resource:` endpoint an event is started.
-    2. this event triggers the correponding lambda with the request.
-    3. lambda communicates with the postgresql database and performs the related crud
-    operation;
+    2. this event triggers the correponding lambda with the request body.
+    3. Lambda contains the asynchronous function with logical code for connecting to the postgresql database.
+    4. we are using aws secrets manager to store our postgresql credentials.
+    5. Lambda recieve postgresql credentials from aws secrets manager and connection is made to the corresponding database.
+    6. lambda function takes the details `resource` table in the database by executing the postgresql query.
+    7. Then the connection to the database is terminated and the instance of the lambda is no longer in existence.
 
 ### 3.2 Function to get an existing resource
 
@@ -85,9 +104,12 @@
 - Response: `res.status(200).json (getResource)`
 
     1. when the user hits the `/resource/{id}:` endpoint an event is started.
-    2. this event triggers the correponding lambda with the request.
-    3. lambda communicates with the postgresql database and performs the related crud
-    operation;
+    2. this event triggers the correponding lambda with the request body.
+    3. Lambda contains the asynchronous function with logical code for connecting to the postgresql database.
+    4. we are using aws secrets manager to store our postgresql credentials.
+    5. Lambda recieve postgresql credentials from aws secrets manager and connection is made to the corresponding database.
+    6. lambda function takes the `{id}` from the user and gets the details of the project from the `resource` table in the database by executing the postgresql query.
+    7. Then the connection to the database is terminated and the instance of the lambda is no longer in existence.
 
 ## Task API
 
@@ -99,9 +121,12 @@
 - Response: `res.status(200).json (getTaskList)`
 
     1. when the user hits the `/task:` endpoint an event is started.
-    2. this event triggers the correponding lambda with the request.
-    3. lambda communicates with the postgresql database and performs the related crud
-    operation;
+    2. this event triggers the correponding lambda with the request body.
+    3. Lambda contains the asynchronous function with logical code for connecting to the postgresql database.
+    4. we are using aws secrets manager to store our postgresql credentials.
+    5. Lambda recieve postgresql credentials from aws secrets manager and connection is made to the corresponding database.
+    6. lambda function takes the details `Task` table in the database by executing the postgresql query.
+    7. Then the connection to the database is terminated and the instance of the lambda is no longer in existence.
 
 ### 4.2 Function to get an existing Task
 
@@ -111,9 +136,12 @@
 - Response: `res.status(200).json (getTask)`
 
     1. when the user hits the `/task/{id}:` endpoint an event is started.
-    2. this event triggers the correponding lambda with the request.
-    3. lambda communicates with the postgresql database and performs the related crud
-    operation;
+    2. this event triggers the correponding lambda with the request body.
+    3. Lambda contains the asynchronous function with logical code for connecting to the postgresql database.
+    4. we are using aws secrets manager to store our postgresql credentials.
+    5. Lambda recieve postgresql credentials from aws secrets manager and connection is made to the corresponding database.
+    6. lambda function takes the `{id}` from the user and gets the details of the project from the `Task` table in the database by executing the postgresql query.
+    7. Then the connection to the database is terminated and the instance of the lambda is no longer in existence.
 
 ## 5 ProjectStatus API
 
@@ -125,9 +153,12 @@
 - Response: `res.status(200).json (getProjectStatus)`
 
     1. when the user hits the `/ProjectStatus:` endpoint an event is started.
-    2. this event triggers the correponding lambda with the request.
-    3. lambda communicates with the postgresql database and performs the related crud
-    operation;
+    2. this event triggers the correponding lambda with the request body.
+    3. Lambda contains the asynchronous function with logical code for connecting to the postgresql database.
+    4. we are using aws secrets manager to store our postgresql credentials.
+    5. Lambda recieve postgresql credentials from aws secrets manager and connection is made to the corresponding database.
+    6. lambda function takes the details `ProjectStatus` table in the database by executing the postgresql query.
+    7. Then the connection to the database is terminated and the instance of the lambda is no longer in existence.
 
 ### 5.2 4.2 Function to get an existing ProjectStatus
 
@@ -137,6 +168,9 @@
 - Response: `res.status(200).json (getProjectStatusUsecases)`
 
     1. when the user hits the `/ProjectStatus/{id}/usecases:` endpoint an event is started.
-    2. this event triggers the correponding lambda with the request.
-    3. lambda communicates with the postgresql database and performs the related crud
-    operation;
+    2. this event triggers the correponding lambda with the request body.
+    3. Lambda contains the asynchronous function with logical code for connecting to the postgresql database.
+    4. we are using aws secrets manager to store our postgresql credentials.
+    5. Lambda recieve postgresql credentials from aws secrets manager and connection is made to the corresponding database.
+    6. lambda function takes the `{id}` from the user and gets the details of the project from the `Usecases` table in the database by executing the postgresql query.
+    7. Then the connection to the database is terminated and the instance of the lambda is no longer in existence.
